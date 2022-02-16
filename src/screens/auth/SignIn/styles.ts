@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { FONTS } from '../../../themes/fonts';
-import { Inter_400Regular } from '@expo-google-fonts/inter';
 import { COLORS } from '../../../themes/colors';
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
+    },
+    body:{
         flex:1,
         justifyContent:'space-between',
         alignItems:'center',
@@ -14,8 +16,8 @@ const styles = StyleSheet.create({
     image:{
         width:260,
         height:300,
-        resizeMode:'contain',
-        marginTop:60
+        resizeMode:'cover',
+        marginTop:-200,
     },
     description:{
         fontFamily:FONTS.bold,
