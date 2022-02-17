@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
         resizeMode:'cover',
         marginTop:-200,
     },
+    icon:{
+        width:'100%',
+        height:90,
+        resizeMode:'contain'
+    },
     description:{
         fontFamily:FONTS.bold,
         fontSize:28,
