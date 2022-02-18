@@ -1,23 +1,34 @@
-import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 
-import SignIn from '../screens/auth/SignIn';
-import Home from '../screens/authenticated/Home';
+import { useAuth } from '../contexts/auth';
+import { ActivityIndicator, View } from 'react-native';
+import { COLORS } from '../themes/colors';
 
-export type StackProps = {
-    SignIn:undefined;
-    Home:{ token:string; }
+import AppRoutes from './authenticated';
+import AuthRoutes from './unauthenticated';
+
+const Routes:React.FC = () => {
+  const { user, loading } = useAuth();
+
+  if(loading){
+    return (
+        <View 
+            style={{ 
+                flex:1, 
+                justifyContent:'flex-end', 
+                alignItems:'center', 
+                paddingVertical:40 
+            }}
+        >
+            <ActivityIndicator size="large" color={COLORS.primary}/> 
+        </View>
+        
+    );
 }
 
-const Stack = createNativeStackNavigator<StackProps>();
+const route = user ? <AppRoutes/> : <AuthRoutes/>
 
-const Routes = () => {
-  return (
-      <Stack.Navigator initialRouteName="SignIn">
-        <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown:false }} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
-  );
+return route;
 }
 
 export default Routes;

@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { IHeaderProps } from './types/index.d';
 import { styles } from './styles';
+import { IHeaderProps } from './types/index.d';
+
+import Profile from '../Profile';
 
 const Header: React.FC<IHeaderProps> = props => {
-    const { title, hasHeight, hasBackground } = props;
+    const { title, hasHeight, hasBackground, hasProfile } = props;
 
     return (
         <View style={
@@ -12,13 +14,15 @@ const Header: React.FC<IHeaderProps> = props => {
                 styles.container,
                 {
                     height: hasHeight ? hasHeight : '20%',
-                    backgroundColor: hasBackground ? hasBackground : '#000'
+                    backgroundColor: hasBackground ? hasBackground : '#000',
                 }
             ]
         }>
-            <Text>
-                {title}
-            </Text>
+            {
+                hasProfile
+                    ? <Profile />
+                    : <Text> {title} </Text>
+            }
         </View>
     )
 }
