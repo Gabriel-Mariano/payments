@@ -39,6 +39,7 @@ const SignIn = () => {
                 <Button
                     title='Entrar com Google'
                     onPress={handleSignIn}
+                    hasImage={true}
                 />
             </View>
         </SafeAreaView>

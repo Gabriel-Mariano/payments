@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         fontFamily:FONTS.regular,
         color:COLORS.white,
         fontSize:12,
+        lineHeight:16,
     },
     image:{
         width:60,

@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
         backgroundColor:COLORS.secondary,
 
         flexDirection:'row',
+        justifyContent:'center',
         alignItems:'center',
 
         shadowColor:COLORS.black,
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
         alignItems:'center'
     },
     title:{
-        fontFamily:FONTS.regular,
+        fontFamily:FONTS.bold,
         fontSize:14,
         fontWeight:'bold',
         color:COLORS.gray
