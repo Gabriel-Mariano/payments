@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
 
+        shadowColor:COLORS.black,
+        shadowOpacity:0.1,
+        shadowOffset: { width:0, height:2 }
     },
     areaIcon:{
         width:'20%',

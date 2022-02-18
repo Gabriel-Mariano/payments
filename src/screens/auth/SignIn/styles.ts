@@ -5,6 +5,7 @@ import { COLORS } from '../../../themes/colors';
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor:COLORS.light
     },
     body:{
         flex:1,

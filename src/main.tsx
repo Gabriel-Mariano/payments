@@ -1,8 +1,11 @@
 import React from 'react';
-import SignIn from './screens/auth/SignIn';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from './routes';
 
 export const Main = () => {
     return (
-        <SignIn />
+        <NavigationContainer>
+            <Routes />
+        </NavigationContainer>
     );
 }
