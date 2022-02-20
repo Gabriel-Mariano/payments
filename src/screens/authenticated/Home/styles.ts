@@ -38,6 +38,24 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontFamily:FONTS.bold
     },
+    content:{
+        width:'100%',
+        marginVertical:10,
+        paddingVertical:15,
+        paddingHorizontal:20,
+        backgroundColor:COLORS.light,
+        borderRadius:5,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    date:{
+        width:60,
+        marginRight:20, 
+    },
+    year:{
+
+    },
     footer:{
         paddingHorizontal:30,
         width:'100%',

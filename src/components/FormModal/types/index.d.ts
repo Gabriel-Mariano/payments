@@ -2,9 +2,10 @@ import React, { Dispatch } from "react";
 import { ModalProps } from "react-native";
 
 type IPaymentsValues = {
+    uuid:any;
     title:string;
     date:string;
-    value:string;
+    value:number;
 }
 
 
@@ -14,9 +15,10 @@ interface IModalComponentProps extends ModalProps {
     data:IPaymentsValues[];
     setData:React.Dispatch<React.SetStateAction<IPaymentsValues[]>>;
     isVisible: boolean;
+    setIsVisible:React.Dispatch<React.SetStateAction<boolean>>;
     buttonText?: string;
     onPress?:() => void;
     onClose?: () => void;
 }
 
-export { IModalComponentProps };
+export { IModalComponentProps, IPaymentsValues };

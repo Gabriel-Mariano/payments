@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, FlatList } from 'react-native';
 import { styles } from './styles';
 
 import { Header } from '../../../components/Header';
-import Card from '../../../components/Card';
-import AddButton from '../../../components/AddButton';
-import ModalComponent from '../../../components/Modal';
-
-type IPaymentsValues = {
-    title:string;
-    date:string;
-    value:string;
-}
+import { CardHeader } from '../../../components/CardHeader';
+import { AddButton } from '../../../components/AddButton';
+import { FormModal } from '../../../components/FormModal';
+import { IPaymentsValues } from '../../../components/FormModal/types';
+import { Card } from '../../../components/Card';
 
 const Home: React.FC = () => {
     const [payments, setPayments] = useState<IPaymentsValues[]>([]);
@@ -25,12 +21,21 @@ const Home: React.FC = () => {
         setModalIsVisible(false);
     }
 
+    const renderTotally = () => {
+        let result = payments.reduce((prev:any,current) => 
+            Number(prev) + Number(current.value)
+        , 0);
+
+        return result
+    }
+
     const renderModal = () => (
-        <ModalComponent 
+        <FormModal 
             isVisible={modalIsVisible} 
-            onDismiss={backdropPress}
+            setIsVisible={setModalIsVisible}
             data={payments}
             setData={setPayments}
+            onDismiss={backdropPress}
         />
     )
     
@@ -42,16 +47,30 @@ const Home: React.FC = () => {
             />
             <View style={styles.body}>
                 <View style={styles.divisor}>
-                    <Card amount={payments.length}/>
+                    <CardHeader amount={payments.length}/>
                 </View>
                 <View style={styles.areaTitle}>
                     <Text style={styles.title}>
                         Meus Boletos
                     </Text>
                     <Text style={styles.description}>
-                        total {`\n`}<Text style={styles.bold}>R$ 0,00</Text>
+                        total {`\n`}<Text style={styles.bold}>R$ {renderTotally().toFixed(2)}</Text>
                     </Text>
                 </View>
+                <FlatList
+                    data={payments}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item)=> item.uuid }
+                    renderItem={({ item, })=> {
+                        return (
+                            <Card 
+                                title={item.title}
+                                date={item.date}
+                                totally={item.value}
+                            />
+                        );
+                    }}
+                />
             </View>
             <AddButton onPress={addPayments}/>
             {renderModal()}

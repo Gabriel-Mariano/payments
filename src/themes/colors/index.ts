@@ -6,4 +6,7 @@ export const COLORS = {
     light:'#F2F3F3',
     dark:'#1C1C1C',
     gray: '#4F4F4F',
+    success:'#00CD66',
+    danger:'#CD3333',
+    placeholder:'#B5B5B5'
 }

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         // height:390,
         paddingHorizontal:20,
-        paddingVertical:30,
+        paddingVertical:40,
         borderRadius:20,
         backgroundColor:COLORS.white,
     },
@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
         fontSize:18,
         fontWeight:'bold',
         alignSelf:'center',
+        marginBottom:30,
+    },
+    title:{
         marginBottom:20,
     },
     describeModal:{
@@ -46,6 +49,29 @@ const styles = StyleSheet.create({
         shadowColor:COLORS.black,
         shadowOpacity:0.1,
         shadowOffset: { width:0, height:2 }
+    },
+    wrapperDate:{
+        flexDirection:'row', 
+        alignItems:'center',
+    },
+    wrapperMessageError:{
+        marginTop:-15,
+        marginBottom:20,
+    },
+    textError:{
+        color:COLORS.danger
+    },
+    date:{
+        width:60,
+    },
+    year:{
+        width:90,
+    },
+    stripe:{
+        marginHorizontal:20,
+    },
+    totally:{
+        marginBottom:20
     }
 });
 

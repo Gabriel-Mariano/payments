@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius:6
     },
     errorMessage:{
-        color:COLORS.dark
+        color:COLORS.danger
     }
 });
 

@@ -6,7 +6,7 @@ import { styles } from './styles';
 import { IAddButtonProps } from './types';
 
 const AddButton:React.FC<IAddButtonProps> = props => {
-    const { title, ...button } = props;
+    const { title, type, ...button } = props;
     return (
         <TouchableOpacity
             onPress={button.onPress}
@@ -17,7 +17,7 @@ const AddButton:React.FC<IAddButtonProps> = props => {
                 style={styles.linearStyle} 
             >
                 <Icon 
-                    name="plus" 
+                    name='plus'
                     size={32} 
                     color="#fff" 
                 />
@@ -26,4 +26,4 @@ const AddButton:React.FC<IAddButtonProps> = props => {
     )
 }
 
-export default AddButton;
+export  { AddButton };

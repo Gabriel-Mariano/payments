@@ -1,5 +1,7 @@
 interface ICardProps {
-    amount:number;
+    title:string;
+    date:string;
+    totally:number;
 }
 
 export { ICardProps };
