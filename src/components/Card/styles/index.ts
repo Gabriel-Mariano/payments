@@ -29,7 +29,19 @@ const styles = StyleSheet.create({
         fontSize:14,
         color:COLORS.gray
     },
-
+    closeButton:{
+        padding:2,
+        backgroundColor:COLORS.danger,
+        alignSelf:'flex-end',
+        marginTop:-20,
+        marginRight:-15,
+        borderRadius:15,
+    },
+    totally:{
+        fontFamily:FONTS.bold,
+        fontSize:16,
+        marginRight:15
+    }
 });
 
 export { styles };

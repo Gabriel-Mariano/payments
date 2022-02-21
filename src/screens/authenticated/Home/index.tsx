@@ -64,9 +64,12 @@ const Home: React.FC = () => {
                     renderItem={({ item, })=> {
                         return (
                             <Card 
+                                uuid={item.uuid}
                                 title={item.title}
                                 date={item.date}
                                 totally={item.value}
+                                data={payments}
+                                setData={setPayments}
                             />
                         );
                     }}

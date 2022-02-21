@@ -80,6 +80,32 @@ const FormModal:React.FC<IModalComponentProps> = props => {
        return moment(date,'DD-MM-YYYY').isAfter(today)
     }
 
+    const onChange = (text:string, type:string, setter:any) => {
+        let regex = new RegExp(/^[0-9]*$/);
+        let resultRegex = regex.test(text);
+        
+        if(type !== 'year'){
+            if(resultRegex === false ){
+                return;
+            }
+            if(text.length > 2){
+                return;
+            } else {
+                setter(text);
+            }
+        } 
+        else {
+            if(resultRegex === false ){
+                return;
+            }
+            if(text.length > 4){
+                return;
+            } else {
+                setter(text);
+            }
+        }
+    }
+
 
     const register = () => {
         const isValid = validateFields();
@@ -141,7 +167,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.date}
                                 label="Dia"
                                 value={day}
-                                onChangeText={(text)=> setDay(text) }
+                                onChangeText={(text)=> onChange(text,'day', setDay) }
                             /> 
                             <Text style={styles.stripe}>
                                 /
@@ -151,7 +177,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.date}
                                 label="Mês"
                                 value={month}
-                                onChangeText={(text)=> setMonth(text) }
+                                onChangeText={(text)=> onChange(text,'month', setMonth) }
                             />
                             <Text style={styles.stripe}>
                                 /
@@ -161,7 +187,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.year}
                                 label="Ano"
                                 value={year}
-                                onChangeText={(text)=> setYear(text) }
+                                onChangeText={(text)=> onChange(text,'year', setYear)  }
                             />
                         </View>
                         <View style={styles.wrapperMessageError}>

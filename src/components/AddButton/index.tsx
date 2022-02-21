@@ -7,6 +7,7 @@ import { IAddButtonProps } from './types';
 
 const AddButton:React.FC<IAddButtonProps> = props => {
     const { title, type, ...button } = props;
+
     return (
         <TouchableOpacity
             onPress={button.onPress}

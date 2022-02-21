@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { AddButton } from '../AddButton';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { ICardProps } from './types/index.d';
 
+import {Ionicons as Icon } from '@expo/vector-icons';
+
 const Card:React.FC<ICardProps> = props => {
-    const { title, date, totally } = props;
+    const { uuid, title, date, totally, data, setData } = props;
+
+    const removePayment = () => {
+        const removeUuid = data.filter((values) => values.uuid !== uuid );
+
+        setData(removeUuid);
+    }
 
     return (
         <View style={styles.container}>
@@ -18,7 +25,13 @@ const Card:React.FC<ICardProps> = props => {
                 </Text>
             </View>
             <View>
-                <Text style={styles.title}>
+                <TouchableOpacity
+                    onPress={removePayment}
+                    style={styles.closeButton}
+                >
+                    <Icon name="close" size={14} color={'#fff'}/>
+                </TouchableOpacity>
+                <Text style={styles.totally}>
                     R$ {totally.toFixed(2)}
                 </Text>
             </View>
