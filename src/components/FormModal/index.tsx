@@ -58,6 +58,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
         } else {
             setPaymentTitleError('')
         }
+        
         if(day === '' || month === '' || year === ''){
             setDateError('Campos obrigatórios');
             return false;
@@ -80,7 +81,18 @@ const FormModal:React.FC<IModalComponentProps> = props => {
        return moment(date,'DD-MM-YYYY').isAfter(today)
     }
 
-    const onChange = (text:string, type:string, setter:any) => {
+    const onChange = (text:string) => {
+        let regex = new RegExp(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*$/)
+        let resultRegex = regex.test(text)
+
+        if(resultRegex === false){
+            return;
+        }
+
+        setPaymentTitle(text);
+    }
+
+    const onChangeDate = (text:string, type:string, setter:any) => {
         let regex = new RegExp(/^[0-9]*$/);
         let resultRegex = regex.test(text);
         
@@ -104,6 +116,16 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                 setter(text);
             }
         }
+    }
+
+    const onChangeValue = (text:string) => {
+        let regex = new RegExp(/^[\d.?!]+$/);
+        let resultRegex = regex.test(text);
+
+        if(resultRegex === false ){
+            return;
+        }
+        setValue(text);
     }
 
 
@@ -157,7 +179,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                         label="Título"
                         placeholder="Ex: Aluguel da casa .. " 
                         value={paymentTitle}
-                        onChangeText={(text)=> setPaymentTitle(text) }
+                        onChangeText={(text) => onChange(text)}
                         style={styles.title}
                         errorMessage={paymentTitleError}   
                     />
@@ -167,7 +189,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.date}
                                 label="Dia"
                                 value={day}
-                                onChangeText={(text)=> onChange(text,'day', setDay) }
+                                onChangeText={(text)=> onChangeDate(text,'day', setDay) }
                             /> 
                             <Text style={styles.stripe}>
                                 /
@@ -177,7 +199,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.date}
                                 label="Mês"
                                 value={month}
-                                onChangeText={(text)=> onChange(text,'month', setMonth) }
+                                onChangeText={(text)=> onChangeDate(text,'month', setMonth) }
                             />
                             <Text style={styles.stripe}>
                                 /
@@ -187,7 +209,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                                 style={styles.year}
                                 label="Ano"
                                 value={year}
-                                onChangeText={(text)=> onChange(text,'year', setYear)  }
+                                onChangeText={(text)=> onChangeDate(text,'year', setYear)  }
                             />
                         </View>
                         <View style={styles.wrapperMessageError}>
@@ -206,7 +228,7 @@ const FormModal:React.FC<IModalComponentProps> = props => {
                         label="Valor a pagar"
                         placeholder="Ex: R$ 90,00" 
                         value={value}
-                        onChangeText={(text) => setValue(text) }
+                        onChangeText={(text) => onChangeValue(text) }
                         style={styles.totally}
                         errorMessage={valueError}
                     />
